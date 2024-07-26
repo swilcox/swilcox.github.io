@@ -1,0 +1,41 @@
+baseURL = 'https://swilcox.github.io'
+languageCode = 'en-us'
+title = 'Steven Wilcox'
+theme = "github-style"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+author = "swilcox"
+description = "just a fleeting shadow"
+github = "swilcox"
+twitter = "swilcox"
+linkedin = "scwilcox"
+instagram = "scwilcox"
+email = "steven@wilcox.be"
+url = "https://wilcox.be"
+keywords = "blog, git, python"
+rss = true
+lastmod = true
+userStatusEmoji = "🫰"
+favicon = "/images/github.png"
+avatar = "/images/scw.png"
+headerIcon = "/images/GitHub-Mark-Light-32px.png"
+location = "TN, US"
+enableGitalk = false
+
+[params.gitalk]
+clientID = "Your client ID"
+clientSecret = "Your client secret"
+repo = "repo"
+owner = "MeiK2333"
+admin = "MeiK2333"
+id = "location.pathname"
+labels = "gitalk"
+perPage = 15
+pagerDirection = "last"
+createIssueManually = true
+distractionFreeMode = false
+
+[frontmatter]
+lastmod = ["lastmod", ":fileModTime", ":default"]
