@@ -2,6 +2,7 @@
 title = 'My First Blog Entry'
 date = 2024-07-25T17:47:26-05:00
 draft = false
+tags = ["python", "general"]
 +++
 # My First Post
 Yo! what up!?!
