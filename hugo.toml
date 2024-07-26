@@ -20,7 +20,7 @@ lastmod = true
 userStatusEmoji = "🫰"
 favicon = "/images/github.png"
 avatar = "/images/scw.png"
-headerIcon = "/images/GitHub-Mark-Light-32px.png"
+headerIcon = "/images/icon.svg"
 location = "TN, US"
 enableGitalk = false
 
