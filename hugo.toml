@@ -22,14 +22,14 @@ favicon = "/images/github.png"
 avatar = "/images/scw.png"
 headerIcon = "/images/icon.svg"
 location = "TN, US"
-enableGitalk = false
+enableGitalk = true
 
 [params.gitalk]
-clientID = "Your client ID"
-clientSecret = "Your client secret"
-repo = "repo"
-owner = "MeiK2333"
-admin = "MeiK2333"
+clientID = "Ov23limLWzmnMLE1HJkb"
+clientSecret = "c3ed7f1f857b9e8b833d97d2d93569f79fe9b257"
+repo = "swilcox-gitalk-comments"
+owner = "swilcox"
+admin = "swilcox"
 id = "location.pathname"
 labels = "gitalk"
 perPage = 15
