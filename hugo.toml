@@ -4,6 +4,7 @@ title = 'Steven Wilcox'
 theme = "github-style"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
+timeZone = 'US/Central'
 
 [params]
 author = "swilcox"
@@ -18,8 +19,8 @@ keywords = "blog, git, python"
 rss = true
 lastmod = true
 userStatusEmoji = "🫰"
-favicon = "/images/github.png"
-avatar = "/images/scw.png"
+favicon = "/images/github-mark.png"
+avatar = "/images/scw.jpg"
 headerIcon = "/images/icon.svg"
 location = "TN, US"
 enableGitalk = true
@@ -39,3 +40,6 @@ distractionFreeMode = false
 
 [frontmatter]
 lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[markup.goldmark.renderer]
+unsafe = true
