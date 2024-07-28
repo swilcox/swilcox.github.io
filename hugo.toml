@@ -5,6 +5,7 @@ theme = "github-style"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 timeZone = 'US/Central'
+enableEmoji = true
 
 [params]
 author = "swilcox"
