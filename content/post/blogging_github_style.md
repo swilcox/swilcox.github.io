@@ -5,6 +5,8 @@ draft = false
 tags = ["general", "hugo", "github", "blog"]
 summary = "may as well"
 +++
+# Intro
+
 I've decided to take advantage of the github pages hosting once again and fire up a blog.
 
 What inspired me? Honestly, seeing the [github style theme](https://github.com/MeiK2333/github-style) for [hugo](https://gohugo.io/). It's pretty clever. What better way to have a github hosted pages blog than to use a style that imitate github?
@@ -12,6 +14,8 @@ What inspired me? Honestly, seeing the [github style theme](https://github.com/M
 There is the obvious confusing that could happen, like folks not appreciating the brilliant theme and thinking that I was too lazy to do *anything* at all, and just write markdown files. Of course, in a round about way that's sort of what's happening, but a bit of configuration and leveraging hugo and the theme.
 
 My purpose here is to post snippets of things I learn as quickly as possible, so don't expect long prose.
+
+# A Hugo Shortcode for Callouts
 
 Oh, my one significant enhancement to the theme was adding support for callouts since Hugo's markdown is not quite fully github markdown 1:1. In github markdown, you can do a callout in markdown like this:
 
