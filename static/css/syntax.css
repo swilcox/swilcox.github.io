@@ -1,0 +1,104 @@
+code .k {
+    color: var(--color-prettylights-syntax-keyword);
+}
+
+code .nf {
+    color: var(--color-prettylights-syntax-entity);
+}
+
+code .o {
+    color: var(--color-prettylights-syntax-constant);
+}
+
+code .bp {
+    color: var(--color-prettylights-syntax-constant);
+}
+
+code .ow {
+    color: var(--color-prettylights-syntax-constant);
+}
+
+code .s2 {
+    color: var(--color-prettylights-syntax-string);
+}
+
+code .nb {
+    color: var(--color-prettylights-syntax-entity);
+}
+
+code .kn {
+    color: var(--color-prettylights-syntax-keyword);
+}
+
+code .nc {
+    color: var(--color-prettylights-syntax-variable);
+}
+
+code .c1 {
+    color: var(--color-prettylights-syntax-comment);
+}
+
+code .kr {
+    color: var(--color-prettylights-syntax-keyword);
+}
+
+code .s1 {
+    color: var(--color-prettylights-syntax-string);
+}
+
+code .s {
+    color: var(--color-prettylights-syntax-string);
+}
+
+.callout {
+    color: var(--color-text-secondary);
+    padding: .5em 1em .25em 1em;
+    border-left: 3px solid var(--color-text-secondary);
+    margin-bottom: 1em;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.callout.callout-note {
+    border-left: 3px solid #67A6FB;
+}
+
+.callout p.type-note::before {
+    content: url("/images/callouts/note.svg");
+    padding-right: 1em;
+}
+
+.callout p.type-note {
+    color: #67A6FB;
+    text-transform: uppercase;
+}
+
+
+.callout.callout-warning {
+    border-left: 3px solid #bc6f25;
+}
+
+.callout p.type-warning::before {
+    content: url("/images/callouts/warning.svg");
+    padding-right: 1em;
+    filter: brightness(0) saturate(100%) invert(42%) sepia(14%) saturate(2579%) hue-rotate(348deg) brightness(109%) contrast(81%);
+}
+
+.callout p.type-warning {
+    color: #bc6f25;
+    text-transform: uppercase;
+}
+
+.callout.callout-important {
+    border-left: 3px solid rebeccapurple;
+}
+
+.callout p.type-important::before {
+    content: url("/images/callouts/important.svg");
+    padding-right: 1em;
+    filter: brightness(0) saturate(100%) invert(21%) sepia(43%) saturate(2735%) hue-rotate(250deg) brightness(94%) contrast(92%);
+}
+
+.callout p.type-important {
+    color: rebeccapurple;
+    text-transform: uppercase;
+}
