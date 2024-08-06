@@ -239,6 +239,13 @@ def test_does_not_include_invalid_state():
 
 ## Conclusion
 
-So I guess, as I've said earlier in quite a few more words, *caveat emptor*.
+So I guess, TL;DR *caveat emptor*.
 
+A couple of points I remind myself when using AI for code generation:
+
+1. The same prompt can result in different approaches. So it's probably good to try a couple times to see which approach feels more correct. Note here that experience as a developer is your guide. A non-developer is still not going to have good results with this as demonstrated by the experiments in what is essentially a pretty basic example. Furthermore, a non-developer is not going to be able to evaluate structure or approaches as being better or worse even when AI yields a working program.
+2. Don't trust or assume that what's generated will work or that it's correct. I've had good success using AI for helping get an *idea* about how to approach a problem or get started on a solution, but as demonstrated, it's a bit more laborious getting to a complete program.
+
+{{< callout important "Final Summary" >}}
 AI is useful for coding but don't count on it being able to get you 100% done or being 100% right.
+{{< /callout >}}
