@@ -6,6 +6,7 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 timeZone = 'US/Central'
 enableEmoji = true
+copyright = "&copy;2024 by Steven Wilcox"
 
 [params]
 author = "swilcox"
