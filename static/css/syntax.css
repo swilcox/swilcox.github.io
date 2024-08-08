@@ -102,3 +102,8 @@ code .s {
     color: rebeccapurple;
     text-transform: uppercase;
 }
+
+.comments {
+    margin: 10px auto;
+    max-width: 840px;
+}
