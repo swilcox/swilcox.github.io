@@ -43,7 +43,7 @@ At this point, you *could* then also set that to be the default namespace in you
 
 This is for the volume mapping / mount, etc. It also happens to be our actual content.
 
-Save this file as `hello-world.html`
+Save this file as `index.html`
 
 ```html
 <html>
@@ -139,6 +139,60 @@ Once that executes correctly, from *any* machine on the network that can reach y
 ```shell
 curl yourserver.local:80
 ```
+
+Or, use a web browser.
+
+## Looking At Resources
+
+If you want to see all these resources that have been created, we can use `kubectl` to examine what we have running.
+
+At the pod, level, you should see something similar to this:
+
+```shell
+$ kubectl get pods --namespace=hello-world
+NAME                                 READY   STATUS    RESTARTS   AGE
+hello-world-nginx-6dfb89b8bf-8lfsk   1/1     Running   0          19s
+hello-world-nginx-6dfb89b8bf-thtpv   1/1     Running   0          19s
+hello-world-nginx-6dfb89b8bf-wrb84   1/1     Running   0          19s
+```
+
+One level up, at the deployment level:
+
+```shell
+$ kubectl get deployments --namespace=hello-world
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+hello-world-nginx   3/3     3            3           2m47s
+```
+
+And then the service level, you can see that here:
+
+```shell
+$ kubectl get services --namespace=hello-world
+NAME          TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-world   ClusterIP   10.43.119.12   <none>        80/TCP    83s
+```
+
+If you'd like to tail the logs of all the running nginx pods, looking for your page fetch(es):
+
+```shell
+$ kubectl logs -f -l app=hello-world --namespace=hello-world
+...
+2024/09/03 01:33:42 [notice] 1#1: start worker process 36
+10.42.0.8 - - [03/Sep/2024:01:33:46 +0000] "GET / HTTP/1.1" 200 86 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0" "10.42.0.1"
+...
+```
+
+And this one is probably something you *might really* want to see -- ingress:
+
+```shell
+$ kubectl get ingress --namespace=hello-world
+NAME          CLASS     HOSTS   ADDRESS       PORTS   AGE
+hello-world   traefik   *       172.16.1.52   80      16m
+```
+
+**Note**: The address here will be the IP address :arrow_up: of your k3s server.
+
+Or just use something like [k9s](https://k9scli.io/).
 
 ## Deleting
 
