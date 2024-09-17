@@ -1,8 +1,9 @@
 +++
-title = 'Python_army_days'
+title = 'Python army-days'
 date = 2024-09-16T09:26:04-05:00
 draft = false
 tags = ['python', 'army-days', 'uv', 'tdd', 'claude']
+summary = "of course I had to a Python version..."
 +++
 # A Python version of `army-days`
 
