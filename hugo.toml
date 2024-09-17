@@ -32,3 +32,6 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[markup.goldmark.parser.attribute]
+block = true # default is false
