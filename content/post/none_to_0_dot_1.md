@@ -70,6 +70,57 @@ In this example, the script here is part of the `__init__.py` file. If the scrip
 
 So there ya go, `version` info where the source of truth is *only* in the `pyproject.toml` file (sort of).
 
-## Other Topics
+
+# Dynamic in the Source (updated 2024-10-05)
+
+As pointed out by Brandon, in the comments, there is another way to specify a version number in just one place. There are pros and cons to this, but it's definitely worse considering.
+
+So the official documentation on this is found here: [Single Sourcing the Version](https://packaging.python.org/en/latest/guides/single-sourcing-package-version/#single-sourcing-the-version). However, the documentation only makes reference to `setuptools`. In my quest to keep things as `uv` aligned as possible, I found [this article](https://waylonwalker.com/hatch-version/) on achieving the same thing as the documentation but with the `hatchling` build system instead.
+
+So rather than creating a new `about.py` file, I chose instead to stick with including the `__version__` definition in my `__init__.py` file. The resulting diff for a project already using the single version mentioned above would be [just this](https://github.com/swilcox/wordmind/pull/18/files).
+
+## Code Based (using dynamic) Version in Detail
+
+In the `pyproject.toml`:
+
+```toml
+[project]
+name = "yourpackagename"
+dynamic = ["version"]
+...
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+...
+[tool.hatch.version]
+path = "src/yourpackagename/__init__.py"
+```
+
+{{< callout note >}}
+This example assumes of course that you're using a build system of `hatchling` which is why I included those snippets in the example `pyproject.toml` file.
+{{< /callout >}}
+
+## Advantages
+
+The pros to this approach seem to be:
+* Your code can now directly access the `__version__` in a more old-school way. Of course, you don't have to include it in the `__init__.py` file. You can choose to put it wherever you feel makes most sense for your project.
+* Existing code that uses the `from importlib.metadata import version` will still work as will the `click` library.
+* You can use the `hatch version ...` command line to control the version number. If you were using `uvx` to execute hatch, then the command would be like this: `uvx hatch version patch`. This would bump the patch value of the version. 
+
+## Disadvantages
+
+The cons to this approach seem to be:
+* It's two specific lines in `pyproject.toml` that must be done in order for this work (fully).
+* It varies based on the build backend you're using.
+* It might be difficult for people new to the project to identify how the version number works (though the configuration does rather specifically point you to where it's at).
+* Commitizen (if you use that) might have a bit more trouble (because it's going to require extra configuration, I believe) controlling the version number.
+
+## Personal Thoughts
+
+I'm really torn about how I feel about this "dynamic" version. I like that it's python code again, but I also find having the version number right in the `pyproject.toml` file *very* compelling and simple.
+
+For projects where the package isn't actually self-installing, the dynamic approach also offers an intermediate step since you'll have a version number in code for that anyway and then if transitioning to a distributed/published package later, it will actually require less of a change.
+
+# Other Topics
 
 In some future post, I need to discuss [commitizen](https://commitizen-tools.github.io/commitizen/) as well as accomplishing a basic version of this using `rye`, `poetry` or `pdm`.
