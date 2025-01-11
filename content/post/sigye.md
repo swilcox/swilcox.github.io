@@ -24,3 +24,5 @@ tags = ["python", "ai"]
 * use of "rich"
 * po/mo files internationalization
 * github copilot
+
+## 
