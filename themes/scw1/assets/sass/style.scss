@@ -1,0 +1,491 @@
+// Color theme definitions
+$color-schemes: (
+    'light': ('primary-text-color': #333,
+        'accent-color': #6789ca,
+        'secondary-color': black,
+        'background-light': #fff,
+        'background-dark': #eee,
+        'nav-active-marker': #999,
+        'subdued-text-color': #777,
+        'drop-shadow-color-1': rgba(0, 0, 0, 0.1),
+        'drop-shadow-color-2': rgba(0, 0, 0, 0.25),
+    ),
+    'dark': ('primary-text-color': #eee,
+        'accent-color': #e5b560,
+        'secondary-color': white,
+        'background-light': #333,
+        'background-dark': #222,
+        'nav-active-marker': #fff,
+        'subdued-text-color': #aaa,
+        'drop-shadow-color-1': rgba(0, 0, 0, 0.5),
+        'drop-shadow-color-2': rgba(0, 0, 0, 0.8),
+    ),
+);
+
+// Application of themes to css variables
+@each $scheme, $colors in $color-schemes {
+    .theme-#{$scheme} {
+        @each $color-name, $color-value in $colors {
+            --#{$color-name}: #{$color-value};
+        }
+    }
+}
+
+// Use a more descriptive variable name for fonts
+$font-primary: 'Lato', sans-serif;
+
+// Define a base unit for consistent spacing
+$base-spacing: 20px;
+
+// Importing Google Font at the beginning of the file for better visibility
+@import "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+// Simplified fadeIn animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// Global Styles
+*,
+*::before,
+*::after {
+    // Ensuring pseudo-elements are also included
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: $font-primary;
+    line-height: 1.6;
+    color: var(--primary-text-color);
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+}
+
+// Utility styles for text
+a {
+    color: var(--accent-color);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-bottom: $base-spacing;
+}
+
+// Container styles
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: $base-spacing;
+    // Utilizing flex-grow, flex-shrink, and flex-basis combined shorthand
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+// Header styles
+header {
+    background-color: var(--background-dark);
+    color: var(--accent-color);
+    text-align: center;
+    box-shadow: 0 1px 3px 2px var(--drop-shadow-color-2);
+    position: relative;
+
+    img {
+        height: 2em;
+    }
+
+    svg {
+        fill: var(--accent-color);
+        height: 2em;
+        width: 2em;
+    }
+
+    h1 {
+        font-variant: small-caps;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0px;
+    }
+
+    .description {
+        font-weight: 100;
+        font-size: smaller;
+    }
+
+    .theme-toggle {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 1em;
+        cursor: pointer;
+    }
+}
+
+// Main layout styles
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: $base-spacing;
+}
+
+//Animation on content section 
+section.content {
+    animation: fadeIn .25s ease-in;
+}
+
+// post formatting
+article h2 {
+    margin-bottom: 0px;
+}
+
+.post-description {
+    margin-bottom: 0px;
+}
+
+.clickable-post-header {
+    border-left: 1px solid var(--background-light);
+    padding-left: 1em;
+
+    a {
+        text-decoration: none;
+    }
+
+    &:hover {
+        border-left: 1px solid var(--accent-color);
+    }
+}
+
+// Navigation styles
+nav li {
+    display: block;
+    color: var(--secondary-color);
+
+    &:hover {
+        background-color: var(--background-dark);
+        color: var(--primary-text-color);
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        padding: 5px;
+        color: inherit; // Ensures the color inherits from the parent li
+        border-left: 2px solid var(--background-dark);
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &.active {
+            border-left-color: var(--nav-active-marker); // TODO: Darken the border color for active link
+        }
+    }
+}
+
+// Meta styles for posts
+.post-meta {
+    color: var(--primary-text-color); // Using darken for color manipulation 40% darker... TODO
+    margin-bottom: $base-spacing; // Use the base margin for consistent spacing
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-date {
+    color: var(--subdued-text-color);
+}
+
+.content-subhead {
+    text-transform: uppercase;
+    font-size: smaller;
+    letter-spacing: .25em;
+    color: var(--subdued-text-color);
+}
+
+// Sidebar styles
+.sidebar {
+    background-color: var(--background-light);
+    padding: $base-spacing;
+    border-right: 1px solid var(--background-dark);
+
+    ul {
+        list-style: none;
+    }
+
+    // For sidebar links, inherit the color from the parent to make it more maintainable
+    a {
+        text-decoration: none;
+    }
+}
+
+// Content styles
+.content {
+    background-color: var(--background-light);
+    padding-top: $base-spacing;
+    padding-bottom: $base-spacing;
+    padding-left: 0;
+    padding-right: 0;
+    flex: 1 0 100%;
+    min-width: 0; // Prevent overflow in flex items
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 15px auto;
+        box-shadow: 0 4px 8px var(--drop-shadow-color-1);
+        transition: box-shadow 0.3s ease-in-out;
+
+        &:hover {
+            box-shadow: 0 8px 16px var(--drop-shadow-color-2);
+        }
+    }
+
+    img.small {
+        max-width: 25%;
+    }
+
+    ul {
+        padding-left: 1em;
+    }
+
+    ol {
+        padding-left: 1em;
+        margin-bottom: $base-spacing;
+    }
+
+    // code {
+    //     padding-left: .5em;
+    //     padding-right: .5em;
+    //     background-color: var(--background-dark);
+    // }
+
+    .post-description {
+        color: var(--primary-text-color);
+    }
+
+    ul.tag-list {
+        list-style: none;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .tag-count {
+                color: var(--subdued-text-color);
+            }
+        }
+    }
+
+
+    ul.post-tags {
+        list-style: none;
+        display: inline-flex;
+        padding-left: 0;
+
+        li {
+            padding: 0;
+
+            &::after {
+                content: "|";
+            }
+
+            &:last-child::after {
+                content: "";
+            }
+
+            a.post-tag {
+                padding-left: .25em;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+}
+
+.note {
+    background-color: var(--background-dark);
+    border-left: 6px solid var(--accent-color);
+    padding: $base-spacing;
+    margin-bottom: $base-spacing;
+}
+
+// Footer styles
+footer {
+    background-color: var(--background-dark);
+    color: var(--primary-text-color);
+    font-weight: 300; // Using 300 instead of 100 for better readability across browsers
+    font-size: small;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 -1px 3px 2px var(--drop-shadow-color-2);
+}
+
+
+// Blockquotes
+blockquote {
+    padding: .5em 2em .5em 2em;
+    margin-bottom: .5em;
+    line-height: 1.5em;
+    color: var(--subdued-text-color);
+    font-size: 1.25em;
+    border-left: solid 3px var(--background-dark);
+    position: relative;
+
+    span {
+        display: block;
+        color: var(--primary-text-color);
+        font-style: italic;
+    }
+
+    ::before {
+        font-family: Arial, Helvetica, sans-serif;
+        content: open-quote;
+        color: var(--background-dark);
+        font-size: 4em;
+        position: absolute;
+        left: 10px;
+        top: 20px;
+    }
+}
+
+// External (Social Media) Links
+.external-links {
+    padding-top: 10px;
+    font-size: x-large;
+
+    li {
+        float: left;
+
+        a {
+            display: block;
+            padding: 0 .25em;
+            margin: .25em;
+            text-align: center;
+            color: var(--accent-color);
+
+            &:hover {
+                border-bottom: 1px solid var(--accent-color);
+            }
+        }
+    }
+}
+
+// Source code <pre> stuff
+pre {
+    padding: .5em;
+    overflow-x: scroll;
+    margin-bottom: 1em;
+}
+
+pre::before {
+    content: attr(data-lang);
+    display: block;
+    background-color: var(--background-dark);
+    color: var(--subdued-text-color);
+    padding: .5em;
+    margin: -.5em -.5em .5em -.5em;
+    text-align: right;
+    font-size: xx-small;
+}
+
+// read-more links
+a.read-more {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+a.read-more::after {
+    content: "\2192";
+}
+
+
+
+// pagination stuff
+div.pagination {
+    margin-bottom: 1em;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    line-height: 1em;
+}
+
+ul.pagination {
+    overflow: hidden;
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+}
+
+.pagination li {
+    list-style: none;
+    // padding: 1em 0em; //
+    margin: 0;
+    border-radius: 0px;
+    border-top: 1px solid var(--background-dark);
+
+    min-width: 5em;
+}
+
+.pagination li a {
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    padding: 1em;
+    border-top: 1px solid var(--background-dark);
+
+
+    color: var(--accent-color);
+}
+
+.pagination li a:hover {
+    text-decoration: none;
+    border-color: var(--accent-color);
+}
+
+.pagination li.active a {
+    border-color: var(--primary-text-color);
+}
+
+
+.disabled {
+    pointer-events: none;
+}
+
+// Media queries for responsive design
+@media screen and (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        flex: 1;
+        margin-right: $base-spacing;
+    }
+
+    .content {
+        flex: 3;
+    }
+}
