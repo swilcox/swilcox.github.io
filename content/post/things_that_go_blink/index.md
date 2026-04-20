@@ -79,7 +79,7 @@ Alerts get a priority assigned based on the event type — tornado and hurricane
 
 Here's roughly how it all fits together:
 
-```
+```goat
                                   ┌──────────┐
     NOAA / Open-Meteo / OWM ───>  │  nalssi  │
                                   └────┬─────┘
@@ -92,10 +92,10 @@ Here's roughly how it all fits together:
                   └────┬────┘    └────┬────┘    └───────┬───────┘
                        │              │                 │
                        v              v                 │
-                ┌─────────────┐  ┌──────────────┐       │ HTTP polling
-                │led-kurokku-go│ │ lcd-kurokku  │       │
-                │  (RPi + LED) │ │ (RPi + LCD)  │       v
-                └─────────────┘  └──────────────┘  ┌────────────┐
+                ┌──────────────┐  ┌──────────────┐      │ HTTP polling
+                │led-kurokku-go│  │ lcd-kurokku  │      │
+                │  (RPi + LED) │  │ (RPi + LCD)  │      v
+                └──────────────┘  └──────────────┘ ┌────────────┐
                                                    │ ESP32-C3   │
                                                    │ (MAX7219 / │
                                                    │  TM1637)   │
